@@ -12,18 +12,20 @@ Here are the specifics of each class shown above with the requirements to look o
 **`Weapon`:** This is a concrete class used for composition (has-a relationship) in ***`GameCharacter`***. Here are the specifications:
 
 1. Create the 4 instance variables from the UML diagram above, with the specified types.
-2. Create all required methods for model classes (constructors, setters, getters, toString, equals)
-3. Error check that `int`s are >= 0, and `String`s are present (not null, length > 0)
+2. Create all required constructors for model classes (full, no-parameter, copy)
+3. Create all required methods for model classes (setters, getters, toString, equals)
+4. Error check that `int`s are >= 0, and `String`s are present (not null, length > 0)
 
 ---
 
 ***`GameCharacter`:*** This is an `abstract` class used as a base class for `Elf` and `Dwarf`. Here are the specifications:
 
 1. Create the 9 instance variables from the UML diagram above, with the specified types.
-2. Create all required methods for model classes (constructors, setters, getters, toString, equals)
+2. Create all required constructors for model classes (full, no-parameter, copy)
+3. Create all required methods for model classes (constructors, setters, getters, toString, equals)
 	- This will be a lot of methods! Stay organized and vigilant to avoid copy/paste errors
-3. Error check that `int`s are >= 0, and `String`s are present (not null, length > 0). Also, you can allow `Weapon` instance variables to be `null` (this would mean they do not have a weapon in that slot). Make sure to allow this and also deep copy!
-4. Create 2 `abstract` methods, `assist` and `attack`, that both take in a *`GameCharacter`* object to interact with. Note the different return types (details below).
+4. Error check that `int`s are >= 0, and `String`s are present (not null, length > 0). Also, you can allow `Weapon` instance variables to be `null` (this would mean they do not have a weapon in that slot). Make sure to allow this and also deep copy!
+5. Create 2 `abstract` methods, `assist` and `attack`, that both take in a *`GameCharacter`* object to interact with. Note the different return types (details below).
 
 ---
 
@@ -31,7 +33,8 @@ Here are the specifics of each class shown above with the requirements to look o
 
 1. No instance variables to create! They have all the data needed in this basic design.
 2. No extra required methods! They inherit all of them to maintain encapsulation.
-3. Implement the two `abstract` methods, `assist` and `attack`, from *`GameCharacter`*. Depending on the class, it should have a different functionality that corresponds with the species:
+3. Create all required constructors for model classes (full, no-parameter, copy)
+4. Implement the two `abstract` methods, `assist` and `attack`, from *`GameCharacter`*. Depending on the class, it should have a different functionality that corresponds with the species:
     - `assist` will provide a positive action on the given *`GameCharacter`* parameter
       - For `Elf`, this can be healing (increasing `hitPoints` left), adding `gold`, etc.
       - For `Dwarf`, this can be adding `damage` amount to weapon(s), adding to `armorClass`, etc.
