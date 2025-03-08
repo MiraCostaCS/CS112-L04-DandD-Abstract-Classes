@@ -22,7 +22,7 @@ Here are the specifics of each class shown above with the requirements to look o
 
 1. Create the 9 instance variables from the UML diagram above, with the specified types.
 2. Create all required constructors for model classes (full, no-parameter, copy)
-3. Create all required methods for model classes (constructors, setters, getters, toString, equals)
+3. Create all required methods for model classes (setters, getters, toString, equals)
 	- This will be a lot of methods! Stay organized and vigilant to avoid copy/paste errors
 4. Error check that `int`s are >= 0, and `String`s are present (not null, length > 0). Also, you can allow `Weapon` instance variables to be `null` (this would mean they do not have a weapon in that slot). Make sure to allow this and also deep copy!
 5. Create 2 `abstract` methods, `assist` and `attack`, that both take in a *`GameCharacter`* object to interact with. Note the different return types (details below).
