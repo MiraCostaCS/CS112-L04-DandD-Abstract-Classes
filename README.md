@@ -5,7 +5,129 @@
 In this assignment, you'll be getting the back-end started for a Dungeons & Dragons (D&D or DnD) related program. Whether it is simulating an adventure or helping a player create their character, we need it to be flexible for those front-ends and more!
 
 Below is a UML diagram showing the class inheritance to visualize the classes you will build for this project:
-![UML class diagram showing relationship between GameCharacter, Weapon, Elf, and Dwarf classes](https://i.imgur.com/t8kHbvP.png)
+```mermaid
+classDiagram
+    GameCharacter <|-- Dwarf : extends
+    GameCharacter <|-- Elf : extends
+    GameCharacter "1" *-- "1..2" Weapon : contains
+
+    class Weapon {
+        + DEFAULT_NAME : String$
+        + DEFAULT_DAMAGE : int$
+        + DEFAULT_RANGE : int$
+        + DEFAULT_ATTACK_BONUS : int$
+        - name : String
+        - damage : int
+        - range : int
+        - attackBonus : int
+
+        + Weapon(name : String, damage : int, range : int, attackBonus : int)
+        + Weapon()
+        + Weapon(original : Weapon)
+
+        + setName(name : String) boolean
+        + setDamage(damage : int) boolean
+        + setRange(range : int) boolean
+        + setAttackBonus(attackBonus : int) boolean
+        + setAll(name : String, damage : int, range : int, attackBonus : int) boolean
+        + getName() String
+        + getDamage() int
+        + getRange() int
+        + getAttackBonus() int
+        + toString() String
+        + equals(other : Object) boolean
+    }
+
+    class GameCharacter <<abstract>> {
+        + DEFAULT_NAME : String$
+        + DEFAULT_CLASS_TYPE : String$
+        + DEFAULT_ALIGNMENT : String$
+        + DEFAULT_GOLD : int$
+        + DEFAULT_EXP_POINTS : int$
+        + DEFAULT_HIT_POINTS : int$
+        + DEFAULT_ARMOR_CLASS : int$
+        + DEFAULT_WEAPON_1 : Weapon$
+        + DEFAULT_WEAPON_2 : Weapon$
+        + VALID_CLASSES : String[]$
+        + VALID_ALIGNMENTS : String[]$
+        - name : String
+        - classType : String
+        - alignment : String
+        - gold : int
+        - expPoints : int
+        - hitPoints : int
+        - armorClass : int
+        - weapon1 : Weapon
+        - weapon2 : Weapon
+
+        + GameCharacter(name : String, classType : String, alignment : String, gold : int, expPoints : int, hitPoints : int, armorClass : int, weapon1 : Weapon, weapon2 : Weapon)
+        + GameCharacter()
+        + GameCharacter(original : GameCharacter)
+
+        + setName(name : String) boolean
+        + setClassType(classType : String) boolean
+        + setAlignment(alignment : String) boolean
+        + setGold(gold : int) boolean
+        + setExpPoints(expPoints : int) boolean
+        + setHitPoints(hitPoints : int) boolean
+        + setArmorClass(armorClass : int) boolean
+        + setWeapon1(weapon : Weapon) boolean
+        + setWeapon2(weapon : Weapon) boolean
+        + setAll(name : String, classType : String, alignment : String, gold : int, expPoints : int, hitPoints : int, armorClass : int, weapon1 : Weapon, weapon2 : Weapon) boolean
+        + getName() String
+        + getClassType() String
+        + getAlignment() String
+        + getGold() int
+        + getExpPoints() int
+        + getHitPoints() int
+        + getArmorClass() int
+        + getWeapon1() Weapon
+        + getWeapon2() Weapon
+        + toString() String
+        + equals(other : Object) boolean
+
+        + assist(other : GameCharacter)*
+        + attack(other : GameCharacter)* boolean
+    }
+
+    class Dwarf {
+        + DEFAULT_NAME : String$
+        + DEFAULT_CLASS_TYPE : String$
+        + DEFAULT_ALIGNMENT : String$
+        + DEFAULT_GOLD : int$
+        + DEFAULT_EXP_POINTS : int$
+        + DEFAULT_HIT_POINTS : int$
+        + DEFAULT_ARMOR_CLASS : int$
+        + DEFAULT_WEAPON_1 : Weapon$
+        + DEFAULT_WEAPON_2 : Weapon$
+
+        + Dwarf(name : String, classType : String, alignment : String, gold : int, expPoints : int, hitPoints : int, armorClass : int, weapon1 : Weapon, weapon2 : Weapon)
+        + Dwarf()
+        + Dwarf(other : Dwarf)
+
+        + assist(other : GameCharacter)
+        + attack(other : GameCharacter) boolean
+    }
+
+    class Elf {
+        + DEFAULT_NAME : String$
+        + DEFAULT_CLASS_TYPE : String$
+        + DEFAULT_ALIGNMENT : String$
+        + DEFAULT_GOLD : int$
+        + DEFAULT_EXP_POINTS : int$
+        + DEFAULT_HIT_POINTS : int$
+        + DEFAULT_ARMOR_CLASS : int$
+        + DEFAULT_WEAPON_1 : Weapon$
+        + DEFAULT_WEAPON_2 : Weapon$
+
+        + Elf(name : String, classType : String, alignment : String, gold : int, expPoints : int, hitPoints : int, armorClass : int, weapon1 : Weapon, weapon2 : Weapon)
+        + Elf()
+        + Elf(other : Elf)
+
+        + assist(other : GameCharacter)
+        + attack(other : GameCharacter) boolean
+    }
+```
 
 Here are the specifics of each class shown above with the requirements to look out for:
 
